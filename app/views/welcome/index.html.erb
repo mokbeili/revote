@@ -1,0 +1,15 @@
+<div class="index_page">
+<p> Welcome to Revote. By using this website, you will be learning about four electoral system alternatives to Canada's current system (First Past the Post). You will also be going through a simulated election under each of the systems. The simulation will put to use the candidates nominated to the last Canadian federal election in 2015</p>
+
+<p> <%= @message %> </p>
+</div>
+
+<div class="index_page_buttons">
+  <h3 style="text-align: center;"> Select your Language </h3>
+  <div id='button_en'>
+    <%= button_to 'English', new_voter_path, method: :get, class: 'btn' %>
+  </div>
+  <div id='button_fr'>
+    <%= button_to 'Français', new_voter_path, method: :get, class: 'btn' %>
+  </div>
+</div>

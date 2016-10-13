@@ -1,0 +1,21 @@
+<div id="new_voter_text">
+  <h1> Single Non-Transferable Vote (SNTV) </h1>
+  <p> In this system each voter selects one candidate only. However, the system differs from FPTP and resembles in that several members are elected per electoral district. The candidates with the highest vote totals are elected. For example, in a constituency where 20 candidates are vying for five available seats, the five candidates with the most votes will all be elected. Compared to FPTP or block vote, SNTV can facilitate the representation of minority parties and independents, because the minimum number of votes needed to be elected decreases as the number of seats in the constituency increases, giving parties that normally receive a lower percentage of votes a better chance of electing a candidate. </p>
+
+  <p class='sys_info'> select one candidate from the list below then submit </p>
+</div>
+
+<div class="voting_block">
+  <%= simple_form_for @vote do |f| %>
+      <% @candidates.in_groups_of(2).each do |p| %>
+          <div class= "vote_option_left", style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[0].party.color}"%> 85%, <%="#{p[0].party.color}"%>);">
+          <%= f.radio_button :candidate_id, p[0].id %> <%= p[0].full_name %> - <%= p[0].party.abbreviation %>
+          </div>
+          <div class= "vote_option_right", style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[1].party.color}"%> 85%, <%="#{p[1].party.color}"%>);">
+          <%= f.radio_button :candidate_id, p[1].id %> <%= p[1].full_name %> - <%= p[1].party.abbreviation %>
+          </div>
+          <br>
+      <% end %>
+      <%= f.button :submit, id:'submit', class:'btn' %>
+    <% end %>
+</div>

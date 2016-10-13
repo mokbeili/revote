@@ -1,0 +1,19 @@
+<div id="new_voter_text">
+  <div id="sys_title">
+    <h1> Alternative Vote (AV) </h1>
+  </div>
+  <p class='sys_info'> Also used to elect a single candidate per electoral district, this system is often called preferential voting. On the ballot, voters rank the candidates running in their electoral district.
+  Candidates garner a majority on the first count, the candidate with the fewest first-preference votes (lowest-ranked) is dropped, and the second-preference votes on the ballots where that candidate ranked first are assigned to the respective remaining candidates. This process continues until one candidate receives the necessary majority. </p>
+  <p class='sys_info'>
+  Drag any number of candidates from the list on the left and rank them in the space on the right with your most preferred candidate being on top</p>
+</div>
+<div class="voting_block">
+  <ul id='list' class="connectedSortable" >
+      <% @candidates.each do |c| %>
+      <li class="ui-state-default" id ="candidate_<%="#{c.id}"%>"} style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{c.party.color}"%> 85%, <%="#{c.party.color}"%>); height : 40px; align: center;"><%=  "#{c.name} #{c.last_name} - #{c.party.abbreviation}" %></li>
+    <% end %>
+  </ul>
+  <ul id='vote', class='connectedSortable'>
+  </ul>
+  <%= button_to "Submit Vote", new_vote_path, method: :get,id: 'submit',class: 'btn' %>
+</div>

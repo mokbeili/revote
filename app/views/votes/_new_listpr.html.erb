@@ -1,0 +1,30 @@
+<div id="new_voter_text">
+  <h1> List Proportional Representation (List PR) </h1>
+  <p> There are two main forms of List PR: closed-list and open-list. Both forms use a  regional or national list of candidates in each constituency drawn up by each party before election day.
+
+  In closed-list PR, the party ranks the names on the list, and citizens vote for a party, not a specific candidate. Once all votes have been counted, each party is awarded seats in proportion to its share of the national vote. Individual seats are then allocated to candidates of each party in the order in which they are ranked on the party list.
+
+  In open-list PR, voters choose a preferred candidate (or candidates) from the list of the party for which they wish to vote. This means that voters effectively determine the order in which the candidates on the list will be awarded seats.
+  <p class='sys_info'>
+  This simulation uses closed-list PR. Select the political party that most aligns with your current beliefs.</p>
+</div>
+
+<%= simple_form_for @vote do |f| %>
+  <div class="voting_block">
+    <% @parties.in_groups_of(2).each do |p| %>
+        <div style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[0].party.color}"%> 85%, <%="#{p[0].party.color}"%>);", class= "vote_option_left">
+        <%= f.radio_button :candidate_id, p[0].id %> <%= p[0].name %>
+        </div>
+        <% if p[1] %>
+          <div style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[1].party.color}"%> 85%, <%="#{p[1].party.color}"%>);", class= "vote_option_right">
+          <%= f.radio_button :candidate_id, p[1].id %> <%= p[1].name %>
+          </div>
+        <% else %>
+          <div style="background-color : white; width: 50%; height: 30px; float: right;">
+          </div>
+        <br>
+        <% end %>
+    <% end %>
+  <%= f.button :submit, id:'submit', class: 'btn' %>
+<% end %>
+</div>

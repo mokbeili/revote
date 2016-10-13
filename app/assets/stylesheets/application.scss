@@ -1,0 +1,196 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ #list {
+   border: 1px solid #eee;
+   width: 47%;
+   min-height: 500px;
+   list-style-type: none;
+   margin: 0;
+   padding: 5px 0 0 0;
+   padding-top: 20px;
+   float: left;
+   margin-right: 10px;
+   background-color: #EEEEEE;
+   text-align: center;
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+ }
+
+ #vote {
+   border: 1px solid #eee;
+   width: 47%;
+   min-height: 500px;
+   list-style-type: none;
+   margin: 0;
+   padding: 5px 0 0 0;
+   padding-top: 20px;
+   float: right;
+   margin-right: 10px;
+   background-color: #EEEEEE;
+   text-align: center;
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+ }
+
+
+
+ #list li, #vote li {
+   margin: 0 5% 5% 5%;
+   padding: 5%;
+   font-size: 1.3em;
+  //  height: 15%;
+  font-family: consolas;
+   width: 90%;
+   text-align: justify;
+   border-top-left-radius: 3px;
+   border-bottom-left-radius: 3px;
+   border-top-right-radius: 3px;
+   border-bottom-right-radius: 3px;
+ }
+
+ .index_page {
+   width: 60%;
+   display: table;
+   margin: 0 auto;
+   border-top-style: solid;
+   border-top-width: 200px;
+   border-top-color: white;
+ }
+
+ .index_page_buttons {
+   width: 60%;
+   display: table;
+   margin: 0 auto;
+ }
+
+ #button_en {
+   width: 50%;
+   float: left;
+   align-self: center;
+   text-align: center;
+ }
+
+ #button_fr {
+   width: 50%;
+   float: right;
+   align-self: center;
+   text-align: center;
+ }
+
+ #new_voter_text{
+   width: 60%;
+   display: table;
+   margin: 0 auto;
+   border-top-style: solid;
+   border-top-width: 100px;
+   border-top-color: white;
+ }
+
+ #new_voter_form{
+   width: 50%;
+   display: table;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-between;
+ }
+
+ .form_thing{
+   justify-content: space-between;
+ }
+
+ .input{
+   float: left;
+   margin: 0.5%;
+ }
+
+ #new_voter_submit{
+   margin-left: 40%;
+   margin-top: 5%;
+ }
+
+.voting_block{
+  width: 60%;
+  display: table;
+  margin: 0 auto;
+  // display: flex;
+  justify-content:center;
+  align-content: center;
+  align-items: center;
+  border-top: solid 20px white;
+}
+
+#submit{
+  margin-top: 30px;
+  margin-left: 43%;
+  margin-bottom: 100px;
+}
+
+#sys_title{
+  text-align: center;
+}
+
+.sys_info{
+  font-size: 1.2em;
+}
+label{
+  display: none;
+}
+
+.vote_option_left{
+  font-family: consolas;
+  font-size: 1.2em;
+  width: 50%;
+  height: 50px;
+  border: solid 5px #EEEEEE;
+  float: left;
+
+}
+
+span.input-group-addon {
+    width: 30%;
+}
+
+.vote_option_right {
+  font-family: consolas;
+  font-size: 1.2em;
+  width: 50%;
+  height: 50px;
+  border: solid 5px #EEEEEE;
+  float: right;
+}
+
+.mmp_heading{
+  font-family: monospace;
+}
+
+
+.goodbye {
+  width: 60%;
+  display: table;
+  margin: 0 auto;
+  border-top-style: solid;
+  // border-top-width: 200px;
+  border-top-color: white;
+  text-align: center;
+}

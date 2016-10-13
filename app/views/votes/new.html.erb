@@ -1,0 +1,10 @@
+<% case @sys %>
+  <% when 'Alternative Vote' %>
+  <%= render "new_av" %>
+  <% when 'Mixed Member Proportional' %>
+  <%= render "new_mmp" %>
+  <% when 'Single Non-Transferable Vote' %>
+  <%= render "new_sntv" %>
+  <% when 'List Proportional Representation' %>
+  <%= render "new_listpr" %>
+<% end %>

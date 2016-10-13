@@ -1,0 +1,13 @@
+<div class="goodbye" style="width: 60%; border-top: solid 200px white;">
+  <p> Enter your Email address below if you are interested in learning more about the results of this study. </p>
+</div>
+
+<%= simple_form_for(@voter) do |f| %>
+    <%= f.error_notification %>
+    <div class="goodbye" style='width: 10%; margin-top: 30px;'>
+       <%= f.input :email %>
+     </div>
+     <div class="goodbye">
+       <%= f.button :submit,'Submit', class:'btn', style:'margin-top: 30px;' %>
+    </div>
+  <% end %>

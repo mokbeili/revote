@@ -1,0 +1,45 @@
+<div id="new_voter_text">
+  <h1> Mixed Member Proportional (MMP) </h1>
+  <p> In this system, each citizen may vote twice. The first vote contributes to electing a local representative (much like the current system). The second vote, which allocates seats to parties according to List PR, is used to attempt to compensate for any disproportionate results in the FPTP constituency part of the election.
+
+  Additional seats are awarded to qualifying parties where the number of constituency seats that they won fails to reflect voter support shown in both components of the election. In this simulation, 100 extra seats will be awarded proportionally to parties and would be added to the existing 338 seats in the house of commons </p>
+
+  <p class='sys_info'> You may select one local representative and one party (The party may differ from your local representative's party). Select by checking the appropriate boxes then submit </p>
+
+</div>
+
+<%= simple_form_for @vote do |f| %>
+  <div class="voting_block">
+    <h3 class="mmp_heading"> Riding Vote </h3>
+    <% @candidates.in_groups_of(2).each do |p| %>
+        <div style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[0].party.color}"%> 85%, <%="#{p[0].party.color}"%>);", class="vote_option_left">
+        <%= f.radio_button :candidate_id, p[0].id %> <%= p[0].full_name %> - <%= p[0].party.abbreviation %>
+        </div>
+        <% if p[1] %>
+          <div style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[1].party.color}"%> 85%, <%="#{p[1].party.color}"%>);", class="vote_option_right">
+          <%= f.radio_button :candidate_id, p[1].id %> <%= p[1].full_name %> - <%= p[1].party.abbreviation %>
+          </div>
+          <br>
+        <% else %>
+          <div style="background-color: #EEEEEE;", class="vote_option_right">
+          </div>
+        <% end %>
+    <% end %>
+    <h3 class="mmp_heading"> Party Vote </h3>
+    <% @party_candidates.in_groups_of(2).each do |p| %>
+        <div style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[0].party.color}"%> 85%, <%="#{p[0].party.color}"%>);", class= "vote_option_left">
+        <%= f.radio_button :mmp_party, p[0].id %> <%= p[0].name %>
+        </div>
+        <% if p[1] %>
+          <div style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[1].party.color}"%> 85%, <%="#{p[1].party.color}"%>);", class= "vote_option_right">
+          <%= f.radio_button :mmp_party, p[1].id %> <%= p[1].name %>
+          </div>
+        <% else %>
+          <div style="background-color : white; width: 50%; height: 50px; float: right;">
+          </div>
+        <% end %>
+        <br>
+    <% end %>
+  <%= f.button :submit, id: 'submit', class: 'btn' %>
+<% end %>
+</div>

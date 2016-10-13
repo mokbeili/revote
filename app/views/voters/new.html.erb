@@ -1,0 +1,35 @@
+<div id="new_voter_text" style="width: 50%;">
+  <p> Enter your address information below. The information will be used to identify your electoral riding.</p>
+</div>
+<div id="new_voter_form">
+  <%= simple_form_for(@voter) do |f| %>
+    <%= f.error_notification %>
+    <%= @voter.errors.full_messages.join(", ") %>
+
+    <%= f.input :unit do %>
+      <span class="input-group-addon">Unit</span>
+      <span class="input-group-addon"><%= f.text_field :unit, class: "form-control" %></span>
+    <% end %>
+    <%= f.input :street do %>
+      <span class="input-group-addon">Street Number</span>
+      <span class="input-group-addon"><%= f.input_field :street, class: "form-control" %></span>
+    <% end %>
+    <%= f.input :street_name do %>
+      <span class="input-group-addon">Street</span>
+      <span class="input-group-addon"><%= f.input_field :street_name, class: "form-control" %></span>
+    <% end %>
+    <%= f.input :city do %>
+      <span class="input-group-addon">City</span>
+      <span class="input-group-addon"><%= f.input_field :city, class: "form-control" %></span>
+    <% end %>
+    <%= f.input :province do %>
+      <span class="input-group-addon">Province</span>
+      <span class="input-group-addon"><%= f.input_field :province, class: "form-control" %></span>
+    <% end %>
+    <%= f.input :postal_code do %>
+      <span class="input-group-addon">Postal Code</span>
+      <span class="input-group-addon"><%= f.input_field :postal_code, class: "form-control" %></span>
+    <% end %>
+      <%= f.button :submit,'Submit', id:'new_voter_submit', class:'btn' %>
+  <% end %>
+</div>
