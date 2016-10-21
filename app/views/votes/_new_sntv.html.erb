@@ -11,9 +11,11 @@
           <div class= "vote_option_left", style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[0].party.color}"%> 85%, <%="#{p[0].party.color}"%>);">
           <%= f.radio_button :candidate_id, p[0].id %> <%= p[0].full_name %> - <%= p[0].party.abbreviation %>
           </div>
+          <% if p[1] %>
           <div class= "vote_option_right", style="background : -webkit-linear-gradient(left, white, white 85%, <%="#{p[1].party.color}"%> 85%, <%="#{p[1].party.color}"%>);">
           <%= f.radio_button :candidate_id, p[1].id %> <%= p[1].full_name %> - <%= p[1].party.abbreviation %>
           </div>
+          <% end %>
           <br>
       <% end %>
       <%= f.button :submit, id:'submit', class:'btn' %>
