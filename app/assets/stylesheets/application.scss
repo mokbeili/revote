@@ -164,7 +164,10 @@ label{
   height: 50px;
   border: solid 5px #EEEEEE;
   float: left;
-
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 span.input-group-addon {
@@ -178,6 +181,10 @@ span.input-group-addon {
   height: 50px;
   border: solid 5px #EEEEEE;
   float: right;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .mmp_heading{
