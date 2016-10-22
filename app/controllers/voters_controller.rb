@@ -6,9 +6,12 @@ class VotersController < ApplicationController
 
   def create
     @voter = Voter.new(voter_params)
-    @voter.save
-    session[:voter_id] = @voter.id
-    redirect_to new_vote_path
+    if @voter.save
+      session[:voter_id] = @voter.id
+      redirect_to new_vote_path, notice: 'Voter was successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
