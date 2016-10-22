@@ -3,9 +3,7 @@
 </div>
 <div id="new_voter_form">
   <%= simple_form_for(@voter) do |f| %>
-    <%= f.error_notification %>
-    <%= @voter.errors.full_messages.join(", ") %>
-
+  <div><%= f.error :longitude %></div>
     <%= f.input :unit do %>
       <span class="input-group-addon">Unit</span>
       <span class="input-group-addon"><%= f.text_field :unit, class: "form-control" %></span>
