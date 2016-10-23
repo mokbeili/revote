@@ -6,6 +6,7 @@ class VotersController < ApplicationController
 
   def create
     @voter = Voter.new(voter_params)
+    @voter.geocode
     if @voter.save
       session[:voter_id] = @voter.id
       redirect_to new_vote_path, notice: 'Voter was successfully created.'
@@ -32,5 +33,8 @@ class VotersController < ApplicationController
 
   def find_voter
     @voter = Voter.find params[:id]
+  end
+
+  def find_riding(long,lat)
   end
 end

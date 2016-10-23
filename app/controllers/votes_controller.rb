@@ -1,10 +1,7 @@
 class VotesController < ApplicationController
   def new
     @vote = Vote.new
-    long = Voter.find(session[:voter_id]).longitude
-    lat = Voter.find(session[:voter_id]).latitude
-
-    riding_code = JSON.parse(HTTP.get(URI("http://represent.opennorth.ca/boundaries/?contains=#{lat},#{long}")))["objects"][-1]["external_id"]
+    voter = Voter.find(session[:voter_id])
 
     session["remaining_systems"] = ["Alternative Vote","Mixed Member Proportional", "Single Non-Transferable Vote", "List Proportional Representation"].shuffle unless session["remaining_systems"]
 
@@ -12,7 +9,7 @@ class VotesController < ApplicationController
       redirect_to edit_voter_path(Voter.find(session[:voter_id]))
     else
       @sys = session["remaining_systems"].pop
-      @candidates = get_candidates(@sys, riding_code)
+      @candidates = get_candidates(@sys, voter.riding_code)
       @parties = @candidates.where(last_name: 'Party')
       @party_candidates = @candidates.where(last_name: nil)
       @candidates = @candidates.where('last_name IS NOT NULL')
