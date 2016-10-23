@@ -10,9 +10,20 @@ class Voter < ApplicationRecord
 
   geocoded_by :address
 
-  before_validation :geocode
+   before_validation :geocode
+   before_validation :get_riding
 
   def address
     "#{street} #{street_name}, #{city}, #{province}"
+  end
+
+  def get_riding
+    data = JSON.parse(HTTP.get(URI("http://represent.opennorth.ca/boundaries/?contains=#{self.latitude},#{self.longitude}")))["objects"]
+
+    for i in 0...data.length do
+      if data[i]['boundary_set_name'] == 'Federal electoral district'
+        self.riding_code = data[i]['external_id']
+      end
+    end
   end
 end
