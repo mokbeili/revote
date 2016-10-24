@@ -34,7 +34,4 @@ class VotersController < ApplicationController
   def find_voter
     @voter = Voter.find params[:id]
   end
-
-  def find_riding(long,lat)
-  end
 end

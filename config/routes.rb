@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get '/goodbye', to: 'welcome#goodbye', as: 'goodbye'
+  get '/redo', to: 'votes#redo', as: 'redo'
 
   root 'welcome#index'
 end
