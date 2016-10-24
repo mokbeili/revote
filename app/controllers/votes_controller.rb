@@ -4,7 +4,6 @@ class VotesController < ApplicationController
     voter = Voter.find(session[:voter_id])
 
     session["remaining_systems"] = ["Alternative Vote","Mixed Member Proportional", "Single Non-Transferable Vote", "List Proportional Representation"].shuffle unless session["remaining_systems"]
-
     if session["remaining_systems"].length == 0
       redirect_to edit_voter_path(Voter.find(session[:voter_id]))
     else
@@ -24,11 +23,19 @@ class VotesController < ApplicationController
   end
 
   def av_vote
-    Vote.where(voter_id: session[:voter_id]).delete_all
+    ids = get_candidates('Alternative Vote',Voter.find(session[:voter_id]).riding_code).ids
+
+    Vote.where(voter_id: session[:voter_id]).where(candidate_id: ids).delete_all
     params[:candidate].each_with_index do |id, index|
       Vote.create(voter_id: session[:voter_id], candidate_id: id, rank: index + 1)
     end
     head :ok
+  end
+
+  def redo
+    session[:voter_id] = nil
+    session["remaining_systems"] = ["Alternative Vote","Mixed Member Proportional", "Single Non-Transferable Vote", "List Proportional Representation"]
+    redirect_to new_voter_path
   end
 
   def get_candidates(sys, code)
